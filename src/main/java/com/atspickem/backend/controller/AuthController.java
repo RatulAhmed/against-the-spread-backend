@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+//@RequestMapping("api/v1")
 public class AuthController {
 
     @Autowired
@@ -25,18 +26,19 @@ public class AuthController {
     private JwtUtil jwtTokenUtil;
 
     // Route that is available without authentication
-    @GetMapping("/")
-    public String hello()  {
-        return "<h2>Welcome</h2>";
-    }
-    // Test Route that is only accesible after authentication
-    @GetMapping("/test")
-    public String teset()  {
-        return "<h2>Test Route</h2>";
-    }
+//    @GetMapping("/")
+//    public String hello()  {
+//        return "<h2>Welcome</h2>";
+//    }
+//    // Test Route that is only accesible after authentication
+//    @GetMapping("/test")
+//    public String test()  {
+//        return "<h2>Test Route</h2>";
+//    }
 
-    @RequestMapping(value="/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
+//    @RequestMapping(value="/authenticate", method = RequestMethod.POST)
+@PostMapping(value="/authenticate")
+public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
             throws Exception {
         try {
             authenticationManager.authenticate(

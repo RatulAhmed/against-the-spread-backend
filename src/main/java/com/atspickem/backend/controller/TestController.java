@@ -1,0 +1,20 @@
+package com.atspickem.backend.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class TestController {
+
+    @GetMapping("/")
+    public String hello()  {
+        return "<h2>Welcome</h2>";
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "<h3>/Test in TestController</h3>";
+    }
+
+
+}
