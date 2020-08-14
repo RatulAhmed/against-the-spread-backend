@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        return new User("foo", "foo" , new ArrayList<>());
-
+        // Currently using Spring Security base User
+        return new MyUserDetails(userName);
     }
 }
