@@ -24,9 +24,14 @@ public class HelloRestController {
     @Autowired
     private JwtUtil jwtTokenUtil;
 
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String hello()  {
-        return "Hello World";
+        return "<h2>Welcome</h2>";
+    }
+
+    @GetMapping("/test")
+    public String teset()  {
+        return "<h2>Test Route</h2>";
     }
 
     @RequestMapping(value="/authenticate", method = RequestMethod.POST)
