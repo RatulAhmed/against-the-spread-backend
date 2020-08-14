@@ -1,6 +1,6 @@
 package com.atspickem.backend.config;
 
-import com.atspickem.backend.models.filters.JwtRequestFilters;
+import com.atspickem.backend.filters.JwtRequestFilters;
 import com.atspickem.backend.services.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

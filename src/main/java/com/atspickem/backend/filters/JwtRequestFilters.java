@@ -1,4 +1,4 @@
-package com.atspickem.backend.models.filters;
+package com.atspickem.backend.filters;
 
 import com.atspickem.backend.services.MyUserDetailsService;
 import com.atspickem.backend.util.JwtUtil;
