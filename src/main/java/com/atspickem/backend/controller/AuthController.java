@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class HelloRestController {
+public class AuthController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -24,11 +24,12 @@ public class HelloRestController {
     @Autowired
     private JwtUtil jwtTokenUtil;
 
+    // Route that is available without authentication
     @GetMapping("/")
     public String hello()  {
         return "<h2>Welcome</h2>";
     }
-
+    // Test Route that is only accesible after authentication
     @GetMapping("/test")
     public String teset()  {
         return "<h2>Test Route</h2>";
