@@ -1,17 +1,31 @@
 package com.atspickem.backend.services;
 
+import com.atspickem.backend.models.User;
+import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public class MyUserDetails implements UserDetails {
 
     private String username;
     private String password;
     private String email;
+    private boolean active;
+    private String authorities;
+
+    public MyUserDetails(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.email = user.getEmail();
+        this.active = user.isActive();
+        this.authorities = user.getRoles();
+    }
 
     public MyUserDetails(String username) {
         this.username = username;
@@ -22,18 +36,42 @@ public class MyUserDetails implements UserDetails {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
     @Override
     public String getPassword() {
-        return "bar";
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return "bar";
+        return this.username;
     }
 
     public String getEmail() {
-        return "bar";
+        return this.email;
     }
 
     @Override
@@ -55,4 +93,6 @@ public class MyUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
