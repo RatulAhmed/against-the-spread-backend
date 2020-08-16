@@ -31,6 +31,14 @@ public class MyUserDetails implements UserDetails {
         this.username = username;
     }
 
+    public MyUserDetails(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.active = true;
+        this.authorities = null;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
