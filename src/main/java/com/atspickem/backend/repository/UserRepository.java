@@ -1,4 +1,4 @@
-package com.atspickem.backend;
+package com.atspickem.backend.repository;
 
 import com.atspickem.backend.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;

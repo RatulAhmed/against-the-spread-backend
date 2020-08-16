@@ -36,6 +36,8 @@ public class AuthController {
 //    }
 
 //    @RequestMapping(value="/authenticate", method = RequestMethod.POST)
+    // Auth Route is used for verifying login and returning jwt token
+    // basically /login
 @PostMapping(value="/authenticate")
 public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
             throws Exception {
@@ -49,7 +51,6 @@ public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRe
         final String jwt = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
-
     }
 
 
