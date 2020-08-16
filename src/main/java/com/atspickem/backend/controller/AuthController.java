@@ -19,7 +19,7 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private MyUserDetailsService userDetailsService;
+    private MyUserDetailsService myUserDetailsService;
 
     @Autowired
     private JwtUtil jwtTokenUtil;
@@ -47,7 +47,7 @@ public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRe
         } catch (BadCredentialsException exc) {
             throw new Exception("Incorrect Username or Password", exc);
         }
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
