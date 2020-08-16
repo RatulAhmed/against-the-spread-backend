@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-//@RequestMapping("api/v1")
 public class AuthController {
 
     @Autowired
@@ -30,7 +29,7 @@ public class AuthController {
 //    public String hello()  {
 //        return "<h2>Welcome</h2>";
 //    }
-//    // Test Route that is only accesible after authentication
+//    // Test Route that is only accessible after authentication
 //    @GetMapping("/test")
 //    public String test()  {
 //        return "<h2>Test Route</h2>";
@@ -52,4 +51,5 @@ public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRe
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
 
     }
+
 }
