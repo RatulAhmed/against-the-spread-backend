@@ -1,11 +1,9 @@
-package com.atspickem.backend.repository;
+package com.atspickem.backend.dao;
 
 import com.atspickem.backend.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserDAO extends JpaRepository<User, Integer> {
     User findByUsername(String username);
 
 
