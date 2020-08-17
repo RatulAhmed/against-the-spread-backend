@@ -28,8 +28,7 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 
     public void createNewUser(SignUpRequest signUpRequest) {
-        User user = new User(signUpRequest.getUsername(), signUpRequest.getPassword(), signUpRequest.getEmail());
-        userDAO.save(user);
+        userDAO.save(new User(signUpRequest.getUsername(), signUpRequest.getPassword(), signUpRequest.getEmail()));
     }
 
 }
