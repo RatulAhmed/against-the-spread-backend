@@ -2,6 +2,7 @@ package com.atspickem.backend.services;
 
 
 import com.atspickem.backend.dao.UserDAO;
+import com.atspickem.backend.models.SignUpRequest;
 import com.atspickem.backend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +25,11 @@ public class MyUserDetailsService implements UserDetailsService {
         user.orElseThrow(() -> new UsernameNotFoundException("Not found " + username));
 
         return user.map(MyUserDetails::new).get();
+    }
+
+    public void createNewUser(SignUpRequest signUpRequest) {
+        User user = new User(signUpRequest.getUsername(), signUpRequest.getPassword(), signUpRequest.getEmail());
+        userDAO.save(user);
     }
 
 }

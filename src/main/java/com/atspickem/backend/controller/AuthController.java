@@ -2,6 +2,7 @@ package com.atspickem.backend.controller;
 
 import com.atspickem.backend.models.AuthenticationRequest;
 import com.atspickem.backend.models.AuthenticationResponse;
+import com.atspickem.backend.models.SignUpRequest;
 import com.atspickem.backend.services.MyUserDetailsService;
 import com.atspickem.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,12 @@ public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRe
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
+
+@PostMapping(value = "/signup")
+//TODO return a responseEntity --- currently just void for testing purposes
+public void createNewUser(@RequestBody SignUpRequest signUpRequest) throws Exception {
+    myUserDetailsService.createNewUser(signUpRequest);
+}
 
 
 

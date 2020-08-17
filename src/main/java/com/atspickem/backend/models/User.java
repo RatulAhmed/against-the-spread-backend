@@ -16,6 +16,15 @@ public class User {
     private boolean active;
     String roles;
 
+    public User(String username, String password, String email) {
+        this.id = 0;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.active = true;
+        this.roles = null;
+    }
+
     public int getId() {
         return id;
     }
