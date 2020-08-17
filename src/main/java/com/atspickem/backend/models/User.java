@@ -16,6 +16,9 @@ public class User {
     private boolean active;
     String roles;
 
+    public User() {
+    }
+
     public User(String username, String password, String email) {
         this.id = 0;
         this.username = username;

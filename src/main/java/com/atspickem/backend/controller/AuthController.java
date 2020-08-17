@@ -13,8 +13,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @RestController
 public class AuthController {
@@ -51,7 +49,6 @@ public class AuthController {
         } catch (BadCredentialsException exc) {
             throw new Exception("Incorrect Username or Password", exc);
         }
-
         final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
 
