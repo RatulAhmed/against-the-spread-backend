@@ -26,20 +26,6 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtTokenUtil;
 
-    // Route that is available without authentication
-//    @GetMapping("/")
-//    public String hello()  {
-//        return "<h2>Welcome</h2>";
-//    }
-//    // Test Route that is only accessible after authentication
-//    @GetMapping("/test")
-//    public String test()  {
-//        return "<h2>Test Route</h2>";
-//    }
-
-    //    @RequestMapping(value="/authenticate", method = RequestMethod.POST)
-    // Auth Route is used for verifying login and returning jwt token
-    // basically /login
     @PostMapping(value = "/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
             throws Exception {
@@ -55,9 +41,14 @@ public class AuthController {
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
-    //TODO return a responseEntity --- currently just void for testing purposes
     @PostMapping(value = "/signup")
-    public void createNewUser(@RequestBody SignUpRequest signUpRequest) throws Exception {
-        myUserDetailsService.createNewUser(signUpRequest);
+    public ResponseEntity<?> createNewUser(@RequestBody SignUpRequest signUpRequest) throws Exception {
+
+        try {
+            myUserDetailsService.createNewUser(signUpRequest);
+        } catch (Exception exc) {
+            throw new Exception("Could not create user", exc);
+        }
+        return ResponseEntity.ok("User successfully created");
     }
 }
