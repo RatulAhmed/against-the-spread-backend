@@ -6,7 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.List;
 
 public class OddsScraper {
 
@@ -28,16 +27,16 @@ public class OddsScraper {
 //        String ariaLabel = outcomeCell.attr("aria-label");
 //        System.out.println(ariaLabel);
 
-        List<Element> oddsDiv = null;
         String odds = null;
         Elements parentDiv = doc.getElementsByClass("sportsbook-outcome-cell");
         Elements test = parentDiv.select("div.sportsbook-outcome-cell__body[aria-label]");
-//        System.out.println(test.toString());
+//        System.out.println(parentDiv.toString());
 
         for(Element e1 : test) {
             odds = e1.attr("aria-label");
+            boolean endsWithDigit = Character.isDigit(odds.charAt(odds.length() - 1));
 
-            if(!(odds.startsWith("O") || odds.startsWith("U")))
+            if(!(odds.startsWith("O") || odds.startsWith("U") || !endsWithDigit))
             System.out.println(odds);
         }
     }
