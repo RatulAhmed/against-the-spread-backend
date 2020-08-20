@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class OddsScraper {
 
+
     public static void main(String[] args) {
         String oddsUrl = "https://sportsbook.draftkings.com/leagues/football/3?category=game-lines&subcategory=game";
         Document doc = null;
@@ -17,27 +18,29 @@ public class OddsScraper {
             try {
                 doc = Jsoup.connect(oddsUrl).userAgent("Mozilla").referrer("http://google.com").get();
             } catch (IOException e) {
-                System.out.println("Error in connecting to odds url");
+                System.out.println("Error in connecting to url");
             }
         }
-//        Elements tableData = doc.getElementsByClass("sportsbook-outcome-cell");
-//        String result = tableData.toString();
-//        Element spread = tableData.first().child(0);
-//        Elements outcomeCell = spread.select("div.sportsbook-outcome-cell__body[aria-label]");
-//        String ariaLabel = outcomeCell.attr("aria-label");
-//        System.out.println(ariaLabel);
 
-        String odds = null;
+        String odds;
+        int counter = 0;
         Elements parentDiv = doc.getElementsByClass("sportsbook-outcome-cell");
-        Elements test = parentDiv.select("div.sportsbook-outcome-cell__body[aria-label]");
+        Elements divsWithOdds = parentDiv.select("div.sportsbook-outcome-cell__body[aria-label]");
 //        System.out.println(parentDiv.toString());
 
-        for(Element e1 : test) {
-            odds = e1.attr("aria-label");
+        for(Element e : divsWithOdds) {
+            odds = e.attr("aria-label");
             boolean endsWithDigit = Character.isDigit(odds.charAt(odds.length() - 1));
 
             if(!(odds.startsWith("O") || odds.startsWith("U") || !endsWithDigit))
-            System.out.println(odds);
+                counter++;
+                if(counter == 1) {
+                    System.out.print(odds);
+                }
+                if(counter == 2) {
+                    counter = 0;
+                    System.out.println(" " + odds);
+                }
         }
     }
 }
