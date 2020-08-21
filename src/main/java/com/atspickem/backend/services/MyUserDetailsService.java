@@ -26,7 +26,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
         return user.map(MyUserDetails::new).get();
     }
-
+    //TODO Encrypt Passwords
     public void createNewUser(SignUpRequest signUpRequest) {
         userDAO.save(new User(signUpRequest.getUsername(), signUpRequest.getPassword(), signUpRequest.getEmail()));
     }
