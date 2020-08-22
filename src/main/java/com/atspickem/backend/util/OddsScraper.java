@@ -15,10 +15,12 @@ import java.util.List;
 @Component
 public class OddsScraper {
 
+    private NflScheduleService nflScheduleService;
+
     public OddsScraper() {
     }
 
-    public static void main(String[] args) {
+    public void doEverything() {
 
         String oddsUrl = "https://sportsbook.draftkings.com/leagues/football/3?category=game-lines&subcategory=game";
         Document doc = null;
@@ -78,6 +80,7 @@ public class OddsScraper {
         // Load NFL schedule for week = current week
         // Create NflSpread objects where where the matchups match the odds matchup
         // persist the nflspreads to database
+
 
 
     }

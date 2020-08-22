@@ -13,7 +13,7 @@ import java.util.List;
 public interface NflScheduleDAO extends JpaRepository<NflSchedule,Integer> {
 
 
-    List<NflSchedule> findByCurrentWeek(Integer integer);
+    List<NflSchedule> findByWeek(Integer integer);
 
     @Override
     List<NflSchedule> findAll();

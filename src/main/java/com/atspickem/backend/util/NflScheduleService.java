@@ -17,7 +17,7 @@ public class NflScheduleService {
     private NflScheduleDAO nflScheduleDAO;
 
     List<NflSchedule> findByCurrentWeek(Integer integer) {
-       return nflScheduleDAO.findByCurrentWeek(integer);
+       return nflScheduleDAO.findByWeek(integer);
     }
 
     List<NflSchedule> findAll() {

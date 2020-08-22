@@ -9,7 +9,7 @@ public class NflSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int currentWeek;
+    private int week;
     private String awayTeam;
     private String homeTeam;
 
@@ -24,12 +24,12 @@ public class NflSchedule {
         this.id = id;
     }
 
-    public int getCurrentWeek() {
-        return currentWeek;
+    public int getWeek() {
+        return week;
     }
 
-    public void setCurrentWeek(int currentWeek) {
-        this.currentWeek = currentWeek;
+    public void setWeek(int currentWeek) {
+        this.week = currentWeek;
     }
 
     public String getAwayTeam() {

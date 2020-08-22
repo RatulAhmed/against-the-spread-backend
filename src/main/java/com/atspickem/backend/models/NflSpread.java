@@ -12,7 +12,7 @@ public class NflSpread {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int spreadId;
 
-    private int currentWeek;
+    private int week;
     private String awayTeam;
     private String awaySpread;
     private String homeTeam;
@@ -22,9 +22,9 @@ public class NflSpread {
     public NflSpread() {
     }
 
-    public NflSpread(int spreadId, int currentWeek, String awayTeam, String awaySpread, String homeTeam, String homeSpread) {
+    public NflSpread(int spreadId, int week, String awayTeam, String awaySpread, String homeTeam, String homeSpread) {
         this.spreadId = spreadId;
-        this.currentWeek = currentWeek;
+        this.week = week;
         this.awayTeam = awayTeam;
         this.awaySpread = awaySpread;
         this.homeTeam = homeTeam;
@@ -40,12 +40,12 @@ public class NflSpread {
         this.spreadId = spreadId;
     }
 
-    public int getCurrentWeek() {
-        return currentWeek;
+    public int getWeek() {
+        return week;
     }
 
-    public void setCurrentWeek(int currentWeek) {
-        this.currentWeek = currentWeek;
+    public void setWeek(int currentWeek) {
+        this.week = currentWeek;
     }
 
     public String getAwayTeam() {
