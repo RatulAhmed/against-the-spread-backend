@@ -6,13 +6,17 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class OddsScraper {
+
+    public OddsScraper() {
+    }
 
     public static void main(String[] args) {
 
@@ -29,9 +33,11 @@ public class OddsScraper {
         Elements divsWithOdds = parentDiv.select("div.sportsbook-outcome-cell__body[aria-label]");
         String odds;
         int counter = 0;
-        List<BettingOdd> oddList = new ArrayList<>();
+//        List<BettingOdd> oddList = new ArrayList<>();
         BettingOdd bettingOddDTO = new BettingOdd();
         String[] oddStringSplit = new String[0];
+
+        List<NflSchedule> nflSchedule = new ArrayList<>();
 
         for(Element e : divsWithOdds) {
             odds = e.attr("aria-label");
@@ -66,12 +72,13 @@ public class OddsScraper {
                         bettingOddDTO.setSecondSpread(oddStringSplit[2]);
                     }
                 }
+//            System.out.println(bettingOddDTO.toString());
         }
 
         // Load NFL schedule for week = current week
         // Create NflSpread objects where where the matchups match the odds matchup
         // persist the nflspreads to database
-        List<NflSchedule> nflScheduleList = new ArrayList<>();
+
 
     }
 }
