@@ -1,10 +1,12 @@
 package com.atspickem.backend.util;
 
 import com.atspickem.backend.models.BettingOdd;
+import com.atspickem.backend.models.NflSchedule;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.List;
 public class OddsScraper {
 
     public static void main(String[] args) {
+
         String oddsUrl = "https://sportsbook.draftkings.com/leagues/football/3?category=game-lines&subcategory=game";
         Document doc = null;
         {
@@ -62,8 +65,13 @@ public class OddsScraper {
                         bettingOddDTO.setSecondTeam(oddStringSplit[0] + " " + oddStringSplit[1]);
                         bettingOddDTO.setSecondSpread(oddStringSplit[2]);
                     }
-                    System.out.println(bettingOddDTO.toString());
                 }
         }
+
+        // Load NFL schedule for week = current week
+        // Create NflSpread objects where where the matchups match the odds matchup
+        // persist the nflspreads to database
+        List<NflSchedule> nflScheduleList = new ArrayList<>();
+
     }
 }
