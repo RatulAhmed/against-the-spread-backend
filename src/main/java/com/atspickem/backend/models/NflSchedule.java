@@ -1,9 +1,12 @@
 package com.atspickem.backend.models;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "nfl_schedule")
+@Proxy(lazy = false)
 public class NflSchedule {
 
     @Id
@@ -46,5 +49,15 @@ public class NflSchedule {
 
     public void setHomeTeam(String homeTeam) {
         this.homeTeam = homeTeam;
+    }
+
+    @Override
+    public String toString() {
+        return "NflSchedule{" +
+                "id=" + id +
+                ", week=" + week +
+                ", awayTeam='" + awayTeam + '\'' +
+                ", homeTeam='" + homeTeam + '\'' +
+                '}';
     }
 }

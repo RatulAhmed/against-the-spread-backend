@@ -3,10 +3,10 @@ package com.atspickem.backend.dao;
 import com.atspickem.backend.models.NflSchedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.atspickem.backend.models.NflSchedule;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional
@@ -17,4 +17,7 @@ public interface NflScheduleDAO extends JpaRepository<NflSchedule,Integer> {
 
     @Override
     List<NflSchedule> findAll();
+
+    @Override
+    NflSchedule getOne(Integer integer);
 }
