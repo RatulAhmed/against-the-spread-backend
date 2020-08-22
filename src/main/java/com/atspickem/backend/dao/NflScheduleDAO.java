@@ -18,6 +18,4 @@ public interface NflScheduleDAO extends JpaRepository<NflSchedule,Integer> {
     @Override
     List<NflSchedule> findAll();
 
-    @Override
-    NflSchedule getOne(Integer integer);
 }

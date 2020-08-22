@@ -19,9 +19,8 @@ public class NflScheduleService {
     @Autowired
     private NflScheduleDAO nflScheduleDAO;
 
-    List<NflSchedule> findByCurrentWeek(Integer integer) {
-        System.out.println(">>>>>>>/nflscheduleservice.findbyCurrentWeek");
-       return nflScheduleDAO.findByWeek(integer);
+    List<NflSchedule> findByWeek(Integer week) {
+       return nflScheduleDAO.findByWeek(week);
     }
 
     List<NflSchedule> findAll() {
@@ -32,8 +31,8 @@ public class NflScheduleService {
 //        return nflScheduleDAO.findById(integer);
 //    }
 
-    NflSchedule getOne(Integer integer) {
-        return nflScheduleDAO.getOne(integer);
+    NflSchedule getOne(Integer week) {
+        return nflScheduleDAO.getOne(week);
     }
 
 }
