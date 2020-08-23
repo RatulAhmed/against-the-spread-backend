@@ -3,6 +3,7 @@ package com.atspickem.backend.util;
 import com.atspickem.backend.models.BettingOdd;
 import com.atspickem.backend.models.NflSchedule;
 import com.atspickem.backend.models.NflSpread;
+import com.atspickem.backend.services.NflSpreadService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -21,6 +22,9 @@ public class OddsScraper implements CommandLineRunner {
 
     @Autowired
     private NflScheduleService nflScheduleService;
+
+    @Autowired
+    private NflSpreadService nflSpreadService;
 
     public OddsScraper() {
     }
@@ -128,8 +132,10 @@ public class OddsScraper implements CommandLineRunner {
                 }
             }
         }
-        System.out.print(nflSpreadList.toString());
 
+        for(NflSpread i : nflSpreadList) {
+            nflSpreadService.createSpread(i);
+        }
 
     }
 }
