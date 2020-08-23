@@ -10,6 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.List;
 
 //TODO Refactor the code in this and schedule cron task
 @Component
+@ConditionalOnExpression("${oddScraper.enabled}")
 public class OddsScraper implements CommandLineRunner {
 
     @Autowired
@@ -32,6 +34,8 @@ public class OddsScraper implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        System.out.println("Running Oddscraper.run()");
         String oddsUrl = "https://sportsbook.draftkings.com/leagues/football/3?category=game-lines&subcategory=game";
         Document doc = null;
         {
@@ -136,6 +140,5 @@ public class OddsScraper implements CommandLineRunner {
         for(NflSpread i : nflSpreadList) {
             nflSpreadService.createSpread(i);
         }
-
     }
 }
