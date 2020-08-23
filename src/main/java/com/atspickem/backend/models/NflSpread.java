@@ -87,4 +87,17 @@ public class NflSpread {
     public void setWinner(String winner) {
         this.winner = winner;
     }
+
+    @Override
+    public String toString() {
+        return "NflSpread{" +
+                "spreadId=" + spreadId +
+                ", week=" + week +
+                ", awayTeam='" + awayTeam + '\'' +
+                ", awaySpread='" + awaySpread + '\'' +
+                ", homeTeam='" + homeTeam + '\'' +
+                ", homeSpread='" + homeSpread + '\'' +
+                ", winner='" + winner + '\'' +
+                '}' + '\n';
+    }
 }

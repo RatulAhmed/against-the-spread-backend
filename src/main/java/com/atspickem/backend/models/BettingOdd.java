@@ -9,6 +9,13 @@ public class BettingOdd {
     public BettingOdd() {
     }
 
+    public BettingOdd(BettingOdd obj) {
+        this.firstTeam = obj.getFirstTeam();
+        this.secondTeam = obj.getSecondTeam();
+        this.firstSpread = obj.getFirstSpread();
+        this.secondSpread = obj.getSecondSpread();
+    }
+
     public String getFirstTeam() {
         return firstTeam;
     }

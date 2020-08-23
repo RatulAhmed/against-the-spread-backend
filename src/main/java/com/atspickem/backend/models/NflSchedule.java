@@ -4,6 +4,7 @@ import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 
+// There are performance issues with Proxy but this table will be accessed twice a week max....
 @Entity
 @Table(name = "nfl_schedule")
 @Proxy(lazy = false)
