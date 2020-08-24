@@ -10,7 +10,7 @@ public class NflSpread {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int spreadId;
+    private int id;
 
     private int week;
     private String awayTeam;
@@ -23,7 +23,7 @@ public class NflSpread {
     }
 
     public NflSpread(int spreadId, int week, String awayTeam, String awaySpread, String homeTeam, String homeSpread) {
-        this.spreadId = spreadId;
+        this.id = spreadId;
         this.week = week;
         this.awayTeam = awayTeam;
         this.awaySpread = awaySpread;
@@ -33,11 +33,11 @@ public class NflSpread {
     }
 
     public int getSpreadId() {
-        return spreadId;
+        return id;
     }
 
     public void setSpreadId(int spreadId) {
-        this.spreadId = spreadId;
+        this.id = spreadId;
     }
 
     public int getWeek() {
@@ -91,7 +91,7 @@ public class NflSpread {
     @Override
     public String toString() {
         return "NflSpread{" +
-                "spreadId=" + spreadId +
+                "spreadId=" + id +
                 ", week=" + week +
                 ", awayTeam='" + awayTeam + '\'' +
                 ", awaySpread='" + awaySpread + '\'' +
