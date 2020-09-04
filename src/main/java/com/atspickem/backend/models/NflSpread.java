@@ -15,7 +15,8 @@ public class NflSpread {
     private String awaySpread;
     private String homeTeam;
     private String homeSpread;
-    private String winner; // H or A or Null
+    private String winner; // H or A or P or Null
+
 
     public NflSpread() {
     }

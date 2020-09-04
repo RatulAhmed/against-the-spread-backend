@@ -14,6 +14,9 @@ public class User {
     private String password;
     private String email;
     private boolean active;
+    private int score;
+    private double pickRatio;
+
 
     public User() {
     }
@@ -24,6 +27,8 @@ public class User {
         this.password = password;
         this.email = email;
         this.active = true;
+        this.score = 0;
+        this.pickRatio = 0.0;
     }
 
     public int getId() {
@@ -66,4 +71,19 @@ public class User {
         this.active = active;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public float getPickRatio() {
+        return pickRatio;
+    }
+
+    public void setPickRatio(float pickRatio) {
+        this.pickRatio = pickRatio;
+    }
 }

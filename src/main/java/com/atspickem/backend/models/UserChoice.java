@@ -9,7 +9,9 @@ public class UserChoice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+    @JoinColumn(name = "user_id")
     private int userId;
+    @JoinColumn(name = "spread_id")
     private int spreadId;
     private char choice;
 
