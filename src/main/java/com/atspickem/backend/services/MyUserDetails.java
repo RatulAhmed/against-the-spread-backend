@@ -22,7 +22,6 @@ public class MyUserDetails implements UserDetails {
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.active = user.isActive();
-        this.authorities = user.getRoles();
     }
 
     public MyUserDetails(String username) {
