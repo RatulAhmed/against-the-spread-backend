@@ -79,7 +79,7 @@ public class User {
         this.score = score;
     }
 
-    public float getPickRatio() {
+    public double getPickRatio() {
         return pickRatio;
     }
 

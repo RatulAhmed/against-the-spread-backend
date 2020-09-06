@@ -15,4 +15,6 @@ public interface NflSpreadDAO extends JpaRepository<NflSpread, Integer> {
     <S extends NflSpread> S save(S s);
 
     List<NflSpread> findAllByWeek(int iterable);
+
+
 }

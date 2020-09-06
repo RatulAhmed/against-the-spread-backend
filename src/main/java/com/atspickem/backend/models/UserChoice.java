@@ -1,5 +1,7 @@
 package com.atspickem.backend.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,19 +9,28 @@ import javax.persistence.*;
 public class UserChoice {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
-    @JoinColumn(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private int id;
+    //    @ManyToOne
+//    @JoinColumn(name = "user_id")
     private int userId;
-    @JoinColumn(name = "spread_id")
+    //    @ManyToOne
+//    @JoinColumn(name = "spread_id")
     private int spreadId;
-    private char choice;
+    private String choice;
 
     public UserChoice() {
     }
 
-    public UserChoice(String id, int userId, int spreadId, char choice) {
+    public UserChoice(int id, int userId, int spreadId, String choice) {
         this.id = id;
+        this.userId = userId;
+        this.spreadId = spreadId;
+        this.choice = choice;
+    }
+
+    public UserChoice(int userId, int spreadId, String choice) {
         this.userId = userId;
         this.spreadId = spreadId;
         this.choice = choice;
@@ -33,6 +44,7 @@ public class UserChoice {
         this.userId = userId;
     }
 
+
     public int getSpreadId() {
         return spreadId;
     }
@@ -41,20 +53,20 @@ public class UserChoice {
         this.spreadId = spreadId;
     }
 
-    public char getChoice() {
+    public String getChoice() {
         return choice;
     }
 
-    public void setChoice(char choice) {
+    public void setChoice(String choice) {
         this.choice = choice;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Id
-    public String getId() {
+    public int getId() {
         return id;
     }
 }
