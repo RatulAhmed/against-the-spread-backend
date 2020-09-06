@@ -10,7 +10,6 @@ public class UserChoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private int id;
     //    @ManyToOne
 //    @JoinColumn(name = "user_id")

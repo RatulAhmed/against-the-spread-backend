@@ -5,6 +5,8 @@ import com.atspickem.backend.models.UserChoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserChoiceDAO extends JpaRepository<UserChoice, Integer> {
     <S extends UserChoice> S save(SpreadChoiceRequest s);
@@ -14,4 +16,5 @@ public interface UserChoiceDAO extends JpaRepository<UserChoice, Integer> {
 
     @Override
     <S extends UserChoice> S save(S s);
+
 }

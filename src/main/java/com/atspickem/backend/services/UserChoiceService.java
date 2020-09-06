@@ -11,23 +11,31 @@ import org.springframework.stereotype.Service;
 import javax.persistence.Cache;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Transactional
 public class UserChoiceService {
 
+    //TODO Figure out why without this id = 0 and doesn't get autofixed by DB like in users
+    private int tempId = 1;
+
     @Autowired
     UserChoiceDAO userChoiceDAO;
 
     @Autowired
     EntityManager entityManager;
+
     public void updateUserChoices(List<SpreadChoiceRequest> spreadChoiceRequestList) {
+        List<UserChoice> userChoiceList = new ArrayList<>();
 
         for(SpreadChoiceRequest s : spreadChoiceRequestList) {
-            entityManager.clear();
-            userChoiceDAO.save(new UserChoice(s.getUserId(), s.getSpreadId(), s.getChoice()));
+            tempId++;
+            userChoiceList.add(new UserChoice(tempId, s.getUserId(),s.getSpreadId(),s.getChoice()));
         }
+
+        userChoiceDAO.saveAll(userChoiceList);
     }
 
 

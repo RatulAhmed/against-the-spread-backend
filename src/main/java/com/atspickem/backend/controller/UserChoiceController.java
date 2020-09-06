@@ -19,7 +19,6 @@ public class UserChoiceController {
 
     @PostMapping(value = "/submitChoice")
     public void updateUserChoices(@RequestBody List<SpreadChoiceRequest> request) {
-        System.out.println("Made it here without failing >>> UserChoice Controller");
         userChoiceService.updateUserChoices(request);
     }
 
