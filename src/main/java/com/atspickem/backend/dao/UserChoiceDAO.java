@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserChoiceDAO extends JpaRepository<UserChoice, Integer> {
@@ -16,5 +17,14 @@ public interface UserChoiceDAO extends JpaRepository<UserChoice, Integer> {
 
     @Override
     <S extends UserChoice> S save(S s);
+
+    boolean existsByUserId(Integer integer);
+
+    @Override
+    Optional<UserChoice> findById(Integer integer);
+
+    Optional<UserChoice> findByUserIdAndSpreadId(Integer userId, Integer spreadId);
+
+
 
 }
