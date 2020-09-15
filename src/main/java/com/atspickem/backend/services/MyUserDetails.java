@@ -16,12 +16,14 @@ public class MyUserDetails implements UserDetails {
     private String email;
     private boolean active;
     private String authorities;
+    private int id;
 
     public MyUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.active = user.isActive();
+        this.id = user.getId();
     }
 
     public MyUserDetails(String username) {
@@ -39,6 +41,10 @@ public class MyUserDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setUsername(String username) {
@@ -77,6 +83,10 @@ public class MyUserDetails implements UserDetails {
 
     public String getEmail() {
         return this.email;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
