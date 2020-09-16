@@ -24,10 +24,14 @@ public class UserChoiceService {
 
     public void updateUserChoices(List<SpreadChoiceRequest> spreadChoiceRequestList) {
         for(SpreadChoiceRequest s : spreadChoiceRequestList) {
-            if(userChoiceDAO.existsByUserId(s.getUserId())) {
-                Optional<UserChoice> userChoice = userChoiceDAO.findByUserIdAndSpreadId(s.getUserId(), s.getSpreadId());
+            Optional<UserChoice> userChoice = userChoiceDAO.findByUserIdAndSpreadId(s.getUserId(), s.getSpreadId());
+            if(userChoice.isEmpty()) {
+                userChoiceDAO.save(new UserChoice(tempId,s.getUserId(),s.getSpreadId(),s.getChoice()));
+            }
+            else {
                 userChoice.get().setChoice(s.getChoice());
             }
+            this.tempId++;
         }
     }
 
