@@ -7,7 +7,6 @@ import com.atspickem.backend.dao.UserDAO;
 import com.atspickem.backend.util.OddsScraper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
