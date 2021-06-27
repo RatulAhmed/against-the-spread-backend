@@ -1,11 +1,9 @@
 package com.atspickem.backend.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "nfl_spread")
 public class NflSpread {
 
     @Id
@@ -17,7 +15,8 @@ public class NflSpread {
     private String awaySpread;
     private String homeTeam;
     private String homeSpread;
-    private String winner; // H or A or Null
+    private String winner; // H or A or P or Null
+
 
     public NflSpread() {
     }

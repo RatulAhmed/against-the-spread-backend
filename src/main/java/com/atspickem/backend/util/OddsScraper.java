@@ -91,7 +91,7 @@ public class OddsScraper implements CommandLineRunner {
                 }
             }
         }
-        int currentWeek = 1;
+        int currentWeek = 2;
         // Load NFL schedule for week = current week
         List<NflSchedule> nflScheduleList = new ArrayList<>();
         nflScheduleList = nflScheduleService.findByWeek(currentWeek);

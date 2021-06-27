@@ -3,6 +3,7 @@ package com.atspickem.backend.controller;
 import com.atspickem.backend.models.AuthenticationRequest;
 import com.atspickem.backend.models.AuthenticationResponse;
 import com.atspickem.backend.models.SignUpRequest;
+import com.atspickem.backend.services.MyUserDetails;
 import com.atspickem.backend.services.MyUserDetailsService;
 import com.atspickem.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
 
     @Autowired
@@ -35,10 +37,10 @@ public class AuthController {
         } catch (BadCredentialsException exc) {
             throw new Exception("Incorrect Username or Password", exc);
         }
-        final UserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final MyUserDetails userDetails = myUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, userDetails.getId(), userDetails.getUsername()));
     }
 
     @PostMapping(value = "/signup")
